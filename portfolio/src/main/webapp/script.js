@@ -26,3 +26,23 @@ function addRandomLanguage() {
   const languageContainer = document.getElementById('language-container');
   languageContainer.innerText = language;
 }
+
+function FetchFunction()
+{
+    console.log('fetching data from the servlet'); 
+
+    const responsePromise = fetch('/data'); 
+    responsePromise.then(handleResponse); 
+}
+function handleResponse(response)
+{
+    const textPromise = response.text(); 
+    textPromise.then(addToDom);  
+}
+function addToDom(responsy)
+{
+    console.log('the response from the java servlet is: '+ responsy)
+    const responseContainer = document.getElementById('response-container')
+    responseContainer.innerText = responsy
+
+}
