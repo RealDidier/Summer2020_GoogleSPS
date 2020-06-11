@@ -15,14 +15,34 @@
 /**
  * Adds a random greeting to the page.
  */
-function addRandomGreeting() {
-  const greetings =
-      ['Hello world!', '¡Hola Mundo!', '你好，世界！', 'Bonjour le monde!'];
+function addRandomLanguage() {
+  const languages =
+      ['English', 'Swahili', 'French', 'Lingala (Spoken in the DR Congo)'];
 
   // Pick a random greeting.
-  const greeting = greetings[Math.floor(Math.random() * greetings.length)];
+  const language = languages[Math.floor(Math.random() * languages.length)];
 
   // Add it to the page.
-  const greetingContainer = document.getElementById('greeting-container');
-  greetingContainer.innerText = greeting;
+  const languageContainer = document.getElementById('language-container');
+  languageContainer.innerText = language;
+}
+
+function FetchFunction()
+{
+    console.log('fetching data from the servlet'); 
+
+    const responsePromise = fetch('/data'); 
+    responsePromise.then(handleResponse); 
+}
+function handleResponse(response)
+{
+    const textPromise = response.text(); 
+    textPromise.then(addToDom);  
+}
+function addToDom(responsy)
+{
+    console.log('the response from the java servlet is: '+ responsy)
+    const responseContainer = document.getElementById('response-container')
+    responseContainer.innerText = responsy
+
 }
