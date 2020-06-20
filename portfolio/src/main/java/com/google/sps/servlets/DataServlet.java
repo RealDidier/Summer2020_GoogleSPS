@@ -33,14 +33,11 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 /** Servlet that returns some example content. TODO: modify this file to handle comments data */
 @WebServlet("/data")
 public class DataServlet extends HttpServlet {
-  //ArrayList<String> doPostArray = new ArrayList<String>(); 
+  
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        /*rrayList<String> stringContainer = new ArrayList<String>(); 
-        stringContainer.add("Didier"); 
-        stringContainer.add("Julien"); 
-        stringContainer.add("Divine"); */
+      
 
         Query query = new Query("comment"); 
         DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -53,14 +50,7 @@ public class DataServlet extends HttpServlet {
         }
 
 
-    /*
-    response.setContentType("text/html;");
-    response.getWriter().println("<h1>Hello world!</h1>");
-    response.getWriter().println("<p>You are doing great, keep up the hard work.</p>"); */
-
-
-    // Convert the ArrayList to JSON
-    //String json = convertToJsonUsingGson(stringContainer); 
+ 
 
     Gson gson = new Gson(); 
     // Send the JSON as the response
@@ -88,7 +78,6 @@ public class DataServlet extends HttpServlet {
     datastore.put(commentEntity); 
 
     response.setContentType("text/html;"); 
-    //response.getWriter().println(text); 
     response.sendRedirect("/index.html");
 
   }
