@@ -33,7 +33,9 @@ function drawChart() {
     'height':400
   };
 
+    console.log('at the rdv'); 
   const chart = new google.visualization.PieChart(
       document.getElementById('chart-container'));
+
   chart.draw(data, options);
 }

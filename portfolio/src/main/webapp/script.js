@@ -11,7 +11,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
 /**
  * Adds a random greeting to the page.
  */
@@ -45,4 +46,26 @@ function addToDom(responsy)
     const responseContainer = document.getElementById('response-container')
     responseContainer.innerText = responsy
 
+}
+function drawChart()
+{
+    console.log('in'); 
+    const values = new google.visualization.DataTable();
+    values.addColumn('string', 'Programming language'); 
+    values.addColumn('number', 'Frequency'); 
+    values.addRows([
+        ['C++', 30], 
+        ['Python',50], 
+        ['Java',20]]); 
+
+    const options = {
+    'title': ' Daily Usage Frequency',
+    'width':500,
+    'height':400
+  };
+   console.log('before the rdv'); 
+  const chart = new google.visualization.PieChart(
+      document.getElementById('chart-container'));
+  console.log('at the rdv'); 
+  chart.draw(values, options);
 }
