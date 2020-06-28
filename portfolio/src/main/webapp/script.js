@@ -47,8 +47,6 @@ function addToDom(responsy)
     responseContainer.innerText = responsy
 
 }
-
-
 function drawChart()
 {
     console.log('in'); 
